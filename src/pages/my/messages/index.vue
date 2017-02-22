@@ -105,7 +105,7 @@
                 你还未登录，请先<router-link to="/login">登录</router-link>
             </div>
             
-            <div class="msg-box">
+            <div class="msg-box" v-if="user.id">
                 <ul class="tab-nav" flex="box:mean">
                     <li :class="{on: !tabIndex}" @click="getNotReadMessage" flex="cross:center main:center">未读消息</li>
                     <li :class="{on: tabIndex}" @click="getHasReadMessage" flex="cross:center main:center">已读消息</li>
@@ -134,8 +134,9 @@
                         </div>
                     </li>
                 </ul>
+                <div v-if="list.length < 1" class="nomsg">～暂无消息～</div>
             </div>
-            <div v-if="list.length < 1" class="nomsg">～暂无消息～</div>
+            
         </v-content>
         
         <v-footer></v-footer>
@@ -147,7 +148,6 @@ import { mapState } from 'vuex'
         data() {
             return {
                 list: [],
-                msg: '你还未登录，请先',
                 tabIndex: false,
                 has_read_messages: [],
                 hasnot_read_messages: []
