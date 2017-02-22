@@ -11,7 +11,7 @@ import './css/common.css'
 import './less/common.less'
 import './iconfont/iconfont.css'
 
-Object.keys(components).forEach((key) => {
+Object.keys(components).forEach((key) => { // 注册公共组件
   Vue.component(`v-${key}`, components[key])
 })
 Object.keys(filters).forEach(k => Vue.filter(k, filters[k])) //注册过滤器
